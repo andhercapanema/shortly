@@ -140,6 +140,12 @@ const GlobalStyle = createGlobalStyle`
 
     #root {
         font-family: 'Lexend Deca', sans-serif;
+        padding: 0 210px;
+    }
+
+    button {
+        font-family: "Lexend Deca";
+        cursor: pointer;
     }
 `;
 
