@@ -13,10 +13,14 @@ function NavBar() {
         <StyledNavBar isLogged={isLogged}>
             {isLogged ? (
                 <>
-                    <Link to={"/signin"}>
+                    <h3>Seja bem-vindo(a), {user}!</h3>
+                    <Link to={"/"}>
                         <NavButton accent={true}>Entrar</NavButton>
                     </Link>
-                    <Link to={"/signup"}>
+                    <Link to={"/ranking"}>
+                        <NavButton accent={true}>Entrar</NavButton>
+                    </Link>
+                    <Link>
                         <NavButton>Cadastrar-se</NavButton>
                     </Link>
                 </>
