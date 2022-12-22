@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledHomePage = styled.header`
+export const StyledHomePage = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,6 +27,7 @@ export const StyledHomePage = styled.header`
         line-height: 45px;
         cursor: pointer;
         color: #000;
+        text-align: center;
     }
 `;
 
