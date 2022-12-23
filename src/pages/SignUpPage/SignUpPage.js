@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledButton } from "../../assets/styles/StyledButton";
 import { StyledInput } from "../../assets/styles/StyledInput";
+import AuthenticationContext from "../../common/contexts/AuthenticationContext";
 import ShortlyResources from "../../common/services/ShortlyResources";
 import { SignUpForm, StyledSignUpPage } from "./style";
 
@@ -14,6 +15,7 @@ function SignUpPage() {
     });
     const { name, email, password, confirmPassword } = form;
     const navigate = useNavigate();
+    const { userToken } = useContext(AuthenticationContext);
 
     function handleForm(e) {
         const { name, value } = e.target;
@@ -31,6 +33,10 @@ function SignUpPage() {
             console.error(err.response);
         }
     }
+
+    useEffect(() => {
+        if (userToken !== null) navigate("/");
+    }, [userToken, navigate]);
 
     return (
         <StyledSignUpPage>

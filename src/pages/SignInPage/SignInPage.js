@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledButton } from "../../assets/styles/StyledButton";
 import { StyledInput } from "../../assets/styles/StyledInput";
@@ -13,7 +13,7 @@ function SignInPage() {
     });
     const { email, password } = form;
     const navigate = useNavigate();
-    const { setUserToken } = useContext(AuthenticationContext);
+    const { userToken, setUserToken } = useContext(AuthenticationContext);
 
     function handleForm(e) {
         const { name, value } = e.target;
@@ -33,6 +33,10 @@ function SignInPage() {
             console.error(err.response);
         }
     }
+
+    useEffect(() => {
+        if (userToken !== null) navigate("/");
+    }, [userToken, navigate]);
 
     return (
         <StyledSignInPage>
