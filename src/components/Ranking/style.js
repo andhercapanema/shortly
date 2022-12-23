@@ -16,6 +16,8 @@ export const RankingHeader = styled.header`
 `;
 
 export const RankingList = styled.ul`
+    width: 100%;
+    max-width: 900px;
     margin-top: 57px;
     display: flex;
     flex-direction: column;

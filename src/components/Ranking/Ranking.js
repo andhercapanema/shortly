@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import trophyIcon from "../../assets/images/trophy.svg";
+import ShortlyResources from "../../common/services/ShortlyResources";
 import { RankingHeader, RankingList } from "./style";
 
 function Ranking() {
+    const [topUrls, setTopUrls] = useState();
+
+    async function updateRanking() {
+        try {
+            const res = await ShortlyResources.getRanking();
+            setTopUrls(res.data);
+        } catch (err) {
+            alert(err.response.data.message);
+            console.error(err.response);
+        }
+    }
+
+    useEffect(() => {
+        updateRanking();
+    }, []);
+
     return (
         <>
             <RankingHeader>
@@ -10,16 +27,14 @@ function Ranking() {
                 <h2>Ranking</h2>
             </RankingHeader>
             <RankingList>
-                <li>1. Fulaninha - 32 links - 1.703.584 visualizações</li>
-                <li>2. Fulaninha - 32 links - 1.703.584 visualizações</li>
-                <li>3. Fulaninha - 32 links - 1.703.584 visualizações</li>
-                <li>4. Fulaninha - 32 links - 1.703.584 visualizações</li>
-                <li>5. Fulaninha - 32 links - 1.703.584 visualizações</li>
-                <li>6. Fulaninha - 32 links - 1.703.584 visualizações</li>
-                <li>7. Fulaninha - 32 links - 1.703.584 visualizações</li>
-                <li>8. Fulaninha - 32 links - 1.703.584 visualizações</li>
-                <li>9. Fulaninha - 32 links - 1.703.584 visualizações</li>
-                <li>10. Fulaninha - 32 links - 1.703.584 visualizações</li>
+                {topUrls &&
+                    topUrls.map(({ id, name, linksCount, visitCount }, idx) => (
+                        <li key={id}>
+                            {idx + 1}. {name} - {linksCount} link
+                            {linksCount > 1 ? "s" : ""} - {visitCount}{" "}
+                            visualizaç{visitCount > 1 ? "ões" : "ão"}
+                        </li>
+                    ))}
             </RankingList>
         </>
     );

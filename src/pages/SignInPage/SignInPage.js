@@ -6,7 +6,7 @@ import AuthenticationContext from "../../common/contexts/AuthenticationContext";
 import ShortlyResources from "../../common/services/ShortlyResources";
 import { SignInForm, StyledSignInPage } from "./style";
 
-function SignInPage({ updateUsersUrls }) {
+function SignInPage() {
     const [form, setForm] = useState({
         email: "",
         password: "",

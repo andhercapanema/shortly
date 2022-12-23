@@ -35,12 +35,10 @@ const GlobalStyle = createGlobalStyle`
     samp,
     small,
     strike,
-    /* strong, */
     sub,
     sup,
     tt,
     var,
-    /* b, */
     u,
     i,
     center,

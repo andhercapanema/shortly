@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { StyledHomePage, UrlsList } from "./style";
 import { Link } from "react-router-dom";
 import Ranking from "../../components/Ranking/Ranking";
@@ -10,11 +10,6 @@ function HomePage({ updateUsersUrls }) {
     const { userUrls } = useContext(UserUrlsContext);
     const isLogged = userUrls !== null;
 
-    useEffect(() => {
-        updateUsersUrls();
-    }, [updateUsersUrls]);
-
-    console.log("userUrls: ", userUrls);
     return (
         <StyledHomePage>
             {isLogged ? (

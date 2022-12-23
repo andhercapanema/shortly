@@ -6,10 +6,10 @@ export const StyledHomePage = styled.main`
     flex-direction: column;
     align-items: center;
     margin-top: 74px;
+    margin-bottom: 60px;
 
     h3 {
         margin-top: 82px;
-        margin-bottom: 60px;
         font-weight: 700;
         font-size: 36px;
         line-height: 45px;

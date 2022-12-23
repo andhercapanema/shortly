@@ -4,10 +4,11 @@ import HomePage from "./pages/HomePage/HomePage";
 import Header from "./components/Header/Header";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import SignInPage from "./pages/SignInPage/SignInPage";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Contexts from "./common/contexts/Contexts";
 import NavBar from "./components/NavBar/NavBar";
 import ShortlyResources from "./common/services/ShortlyResources";
+import RankingPage from "./pages/RankingPage/RankingPage";
 
 function App() {
     const storedUserToken = JSON.parse(localStorage.getItem("shortlyUser"));
@@ -26,16 +27,9 @@ function App() {
         }
     }, [userToken]);
 
-    /* async function updateUsersUrls() {
-        try {
-            console.log("atualizou!");
-            const res = await ShortlyResources.getUsersUrls();
-            setUserUrls(res.data);
-        } catch (err) {
-            alert(err.response.data.message);
-            console.error(err.response);
-        }
-    } */
+    useEffect(() => {
+        updateUsersUrls();
+    }, [updateUsersUrls]);
 
     return (
         <BrowserRouter>
@@ -60,6 +54,7 @@ function App() {
                             <SignInPage updateUsersUrls={updateUsersUrls} />
                         }
                     />
+                    <Route path="/ranking" element={<RankingPage />} />
                 </Routes>
             </Contexts>
         </BrowserRouter>

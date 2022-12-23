@@ -22,7 +22,6 @@ function UrlCard({
     }
 
     async function deleteUrl() {
-        console.log("executou o delete");
         try {
             await ShortlyResources.deleteUrl(id, userToken);
             await updateUsersUrls();

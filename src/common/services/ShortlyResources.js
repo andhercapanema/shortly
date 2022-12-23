@@ -22,7 +22,7 @@ const ShortlyResources = {
                 Authorization: `Bearer ${token}`,
             },
         }),
-    getRanking: () => api.get("/ranking"), // ainda não utilizado
+    getRanking: () => api.get("/ranking"),
 };
 
 export default ShortlyResources;
