@@ -1,11 +1,20 @@
 import React from "react";
-import UserContext from "./UserContext";
+import AuthenticationContext from "./AuthenticationContext";
+import UserUrlsContext from "./UserUrlsContext";
 
-function Contexts({ user, setUser, children }) {
+function Contexts({
+    children,
+    userUrls,
+    setUserUrls,
+    userToken,
+    setUserToken,
+}) {
     return (
-        <UserContext.Provider value={{ user, setUser }}>
-            {children}
-        </UserContext.Provider>
+        <UserUrlsContext.Provider value={{ userUrls, setUserUrls }}>
+            <AuthenticationContext.Provider value={{ userToken, setUserToken }}>
+                {children}
+            </AuthenticationContext.Provider>
+        </UserUrlsContext.Provider>
     );
 }
 

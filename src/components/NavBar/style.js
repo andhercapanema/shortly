@@ -5,8 +5,9 @@ const { accent1, grey } = COLORS;
 
 export const StyledNavBar = styled.nav`
     display: flex;
-    justify-content: flex-end;
     margin-bottom: 20px;
+    justify-content: ${({ isLogged }) =>
+        isLogged ? "space-between" : "flex-end"};
 `;
 
 export const NavButton = styled.button`
@@ -17,4 +18,5 @@ export const NavButton = styled.button`
     font-size: 14px;
     line-height: 18px;
     color: ${({ accent }) => (accent ? accent1 : grey)};
+    text-decoration: ${({ underline }) => (underline ? "underline" : "none")};
 `;

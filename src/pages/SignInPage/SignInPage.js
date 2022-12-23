@@ -1,17 +1,19 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import UserContext from "../../common/contexts/UserContext";
+import { StyledButton } from "../../assets/styles/StyledButton";
+import { StyledInput } from "../../assets/styles/StyledInput";
+import AuthenticationContext from "../../common/contexts/AuthenticationContext";
 import ShortlyResources from "../../common/services/ShortlyResources";
 import { SignInForm, StyledSignInPage } from "./style";
 
-function SignInPage() {
+function SignInPage({ updateUsersUrls }) {
     const [form, setForm] = useState({
         email: "",
         password: "",
     });
     const { email, password } = form;
     const navigate = useNavigate();
-    const { setUser } = useContext(UserContext);
+    const { setUserToken } = useContext(AuthenticationContext);
 
     function handleForm(e) {
         const { name, value } = e.target;
@@ -23,8 +25,8 @@ function SignInPage() {
 
         try {
             const { data: token } = await ShortlyResources.signIn(form);
-            setUser(token);
-            localStorage.setItem("shortly_user", JSON.stringify(token));
+            setUserToken(token);
+            localStorage.setItem("shortlyUser", JSON.stringify(token));
             navigate("/");
         } catch (err) {
             alert(err.response.data.message);
@@ -35,7 +37,7 @@ function SignInPage() {
     return (
         <StyledSignInPage>
             <SignInForm onSubmit={login}>
-                <input
+                <StyledInput
                     type="email"
                     name="email"
                     onChange={handleForm}
@@ -43,7 +45,7 @@ function SignInPage() {
                     placeholder="E-mail"
                     required
                 />
-                <input
+                <StyledInput
                     type="password"
                     name="password"
                     onChange={handleForm}
@@ -51,7 +53,7 @@ function SignInPage() {
                     placeholder="Senha"
                     required
                 />
-                <button>Criar Conta</button>
+                <StyledButton>Entrar</StyledButton>
             </SignInForm>
         </StyledSignInPage>
     );

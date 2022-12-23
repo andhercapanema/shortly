@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { StyledButton } from "../../assets/styles/StyledButton";
+import { StyledInput } from "../../assets/styles/StyledInput";
 import ShortlyResources from "../../common/services/ShortlyResources";
 import { SignUpForm, StyledSignUpPage } from "./style";
 
@@ -33,14 +35,14 @@ function SignUpPage() {
     return (
         <StyledSignUpPage>
             <SignUpForm onSubmit={registerUser}>
-                <input
+                <StyledInput
                     name="name"
                     onChange={handleForm}
                     value={name}
                     placeholder="Nome"
                     required
                 />
-                <input
+                <StyledInput
                     type="email"
                     name="email"
                     onChange={handleForm}
@@ -48,7 +50,7 @@ function SignUpPage() {
                     placeholder="E-mail"
                     required
                 />
-                <input
+                <StyledInput
                     type="password"
                     name="password"
                     onChange={handleForm}
@@ -56,7 +58,7 @@ function SignUpPage() {
                     placeholder="Senha"
                     required
                 />
-                <input
+                <StyledInput
                     type="password"
                     name="confirmPassword"
                     onChange={handleForm}
@@ -64,7 +66,7 @@ function SignUpPage() {
                     placeholder="Confirmar Senha"
                     required
                 />
-                <button>Criar Conta</button>
+                <StyledButton>Criar Conta</StyledButton>
             </SignUpForm>
         </StyledSignUpPage>
     );
